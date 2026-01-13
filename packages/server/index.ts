@@ -1,22 +1,28 @@
-import express from 'express';
+import express, { request } from 'express';
 import type { Request, Response } from 'express';
 import dotenv from 'dotenv';
+import { resolve } from 'bun';
 
 dotenv.config(); 
 
 const app = express();
+// const port = process.env.PORT || 5177;
+
 const port = process.env.PORT || 3000;
 
 app.get('/', (req: Request, res: Response) => {
-    res.send('Hello World from /')
+    res.send('Hello World from /');
+    console.log('in app.get /');
 });
 
 app.get('/api/hello', (req: Request, res: Response) => {
-    res.json('Hello World! from /api/hello')
+    res.json('Hello World! from /api/hello');
+    // res.send('Hello World from in send not json');
+    console.log('in app.get /api/hello');
 });
 
 app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`)
+    console.log(`Server is running on http://localhost:${port}`);
 });
 
 // import express from 'express';
